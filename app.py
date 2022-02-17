@@ -214,6 +214,8 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='成功'))
             except psycopg2.errors.UniqueViolation:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已註冊'))
+            except psycopg2.errors.StringDataRightTruncation:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text='姓名請小於50字'))
             except:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='失敗'))
 
