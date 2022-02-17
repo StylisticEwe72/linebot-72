@@ -224,11 +224,12 @@ def handle_message(event):
         username = profile.display_name
 
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM userdata WHERE userid = %s and username = %s;", (user_id,username))
+        cursor.execute("SELECT * FROM userdata WHERE userid = %s and username = %s;", (user_id, username))
         user_data = cursor.fetchone()
         conn.commit()
         cursor.close()
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=f'line id = {user_data[1]}\nname = {user_data[2]}'))
+        line_bot_api.reply_message(event.reply_token,
+                                   TextSendMessage(text=f'line id = {user_data[1]}\nname = {user_data[2]}'))
 
     if '@改名 ' in line_text:
         line_text = line_text.replace('@改名 ', '')
@@ -239,13 +240,17 @@ def handle_message(event):
             group_id = event.source.group_id
             profile = line_bot_api.get_group_member_profile(group_id, user_id)
             username = profile.display_name
-            cursor = conn.cursor()
-            cursor.execute("UPDATE userdata SET name = %s WHERE userid = %s",(line_text, user_id))
-            cursor.execute("SELECT * FROM userdata WHERE userid = %s and username = %s;", (user_id, username))
-            user_data = cursor.fetchone()
-            conn.commit()
-            cursor.close()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f'成功\nline id = {user_data[1]}\nname = {user_data[2]}'))
+            try:
+                cursor = conn.cursor()
+                cursor.execute("UPDATE userdata SET name = %s WHERE userid = %s", (line_text, user_id))
+                cursor.execute("SELECT * FROM userdata WHERE userid = %s and username = %s;", (user_id, username))
+                user_data = cursor.fetchone()
+                conn.commit()
+                cursor.close()
+                line_bot_api.reply_message(event.reply_token,
+                                           TextSendMessage(text=f'成功\nline id = {user_data[1]}\nname = {user_data[2]}'))
+            except psycopg2.errors.StringDataRightTruncation:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text='姓名請小於50字'))
 
 # -----------------------------------------------------------------------------------------------
 if __name__ == "__main__":
