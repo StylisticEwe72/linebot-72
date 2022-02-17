@@ -87,6 +87,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=sex_book))
 
     if '我出' in line_text:
+        global mora_txt
         mora_list = ['剪刀', '石頭', '布']
         a = random.choice(mora_list)
         if '剪刀' in line_text:
@@ -229,12 +230,9 @@ def handle_message(event):
 
     if line_text == '@查詢':
         user_id = event.source.user_id
-        group_id = event.source.group_id
-        profile = line_bot_api.get_group_member_profile(group_id, user_id)
-        username = profile.display_name
 
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM userdata WHERE userid = %s and username = %s;", (user_id, username))
+        cursor.execute("SELECT * FROM userdata WHERE userid = %s and userid = %s;", (user_id, user_id))
         user_data = cursor.fetchone()
         conn.commit()
         cursor.close()
