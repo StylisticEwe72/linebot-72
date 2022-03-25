@@ -28,6 +28,14 @@ def check_name(name):
         return True
     else:
         return False
+# 機率
+def proba(x):
+    n = random.randint(1,100)
+    if 0 < n <= x:
+        return True
+    else:
+        return False
+
 
 
 # -----------------------------------------------------------------------------------------------
@@ -259,7 +267,13 @@ def handle_message(event):
             cursor.close()
             line_bot_api.reply_message(event.reply_token,
                                         TextSendMessage(text=f'成功\nline id = {user_data[1]}\nname = {user_data[2]}'))
-
+    user_id = event.source.user_id
+    group_id = event.source.group_id
+    profile = line_bot_api.get_group_member_profile(group_id, user_id)
+    username = profile.display_name
+    if username == '羅翊帆':
+        if proba(30):
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='gay'))
 
 
 # -----------------------------------------------------------------------------------------------
