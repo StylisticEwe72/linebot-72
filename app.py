@@ -271,9 +271,9 @@ def handle_message(event):
     group_id = event.source.group_id
     profile = line_bot_api.get_group_member_profile(group_id, user_id)
     username = profile.display_name
-    if username == '羅翊帆':
+    if username == '林家名':
         if proba(30):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='gay'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='頂級美女'))
 
 
 # -----------------------------------------------------------------------------------------------
