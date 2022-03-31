@@ -275,7 +275,7 @@ def handle_message(event):
     profile = line_bot_api.get_group_member_profile(group_id, user_id)
     username = profile.display_name
     if username in name_d:
-        if proba(10):
+        if proba(25):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
 
 
