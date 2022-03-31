@@ -39,7 +39,7 @@ def proba(x):
         return False
 
 
-name_d = {'林家名': '頂級梅女', '王政揚': '飛揚的揚', '羅翊帆': 'gay', 'Henry Wang': '好電', '宏源': '哈哈哈',}
+name_d = {'林家名': '600秒', '王政揚': '飛揚的揚', '羅翊帆': 'gay', 'Henry Wang': '好電', '宏源': '哈哈哈',}
 
 # -----------------------------------------------------------------------------------------------
 # 課表
@@ -275,7 +275,7 @@ def handle_message(event):
     profile = line_bot_api.get_group_member_profile(group_id, user_id)
     username = profile.display_name
     if username in name_d:
-        if proba(25):
+        if proba(15):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
 
 
