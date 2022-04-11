@@ -281,8 +281,6 @@ def handle_message(event):
         if proba(15):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
 
-    if line_text == "課表":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reneelab.net%2Fwin-10-blue-screen.html&psig=AOvVaw1nIKCKDC4WtJcSuPUP-7rM&ust=1649755415073000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCOjRu_7Xi_cCFQAAAAAdAAAAABAN', preview_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reneelab.net%2Fwin-10-blue-screen.html&psig=AOvVaw1nIKCKDC4WtJcSuPUP-7rM&ust=1649755415073000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCOjRu_7Xi_cCFQAAAAAdAAAAABAN'))
 
 
 # -----------------------------------------------------------------------------------------------
