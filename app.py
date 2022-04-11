@@ -282,7 +282,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
 
     if line_text == "課表":
-        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://drive.google.com/file/d/1r7tDFh1x1fy_D5qiM3WnbJE1xeSSuNhW/view', preview_image_url='https://drive.google.com/file/d/1r7tDFh1x1fy_D5qiM3WnbJE1xeSSuNhW/view'))
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://img.onl/bo8Gxc', preview_image_url='https://img.onl/bo8Gxc'))
 
 
 # -----------------------------------------------------------------------------------------------
