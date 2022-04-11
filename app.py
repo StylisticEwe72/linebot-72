@@ -270,6 +270,9 @@ def handle_message(event):
             cursor.close()
             line_bot_api.reply_message(event.reply_token,
                                        TextSendMessage(text=f'成功\nline id = {user_data[1]}\nname = {user_data[2]}'))
+
+
+
     user_id = event.source.user_id
     group_id = event.source.group_id
     profile = line_bot_api.get_group_member_profile(group_id, user_id)
@@ -279,7 +282,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
 
     if line_text == "課表":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='Test'))
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://drive.google.com/file/d/1r7tDFh1x1fy_D5qiM3WnbJE1xeSSuNhW/view', preview_image_url='https://drive.google.com/file/d/1r7tDFh1x1fy_D5qiM3WnbJE1xeSSuNhW/view'))
 
 
 # -----------------------------------------------------------------------------------------------
