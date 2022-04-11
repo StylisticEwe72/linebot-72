@@ -278,6 +278,9 @@ def handle_message(event):
         if proba(15):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
 
+    if line_text == "課表":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='Test'))
+
 
 # -----------------------------------------------------------------------------------------------
 if __name__ == "__main__":
