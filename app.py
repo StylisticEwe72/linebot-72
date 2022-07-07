@@ -279,6 +279,7 @@ def handle_message(event):
     username = profile.display_name
     if username in name_d:
         if proba(15):
+            break
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
 
 
