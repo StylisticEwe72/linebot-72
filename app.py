@@ -277,11 +277,11 @@ def handle_message(event):
     group_id = event.source.group_id
     profile = line_bot_api.get_group_member_profile(group_id, user_id)
     username = profile.display_name
+    '''
     if username in name_d:
         if proba(15):
-            break
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=name_d[username]))
-
+    '''
 
 
 # -----------------------------------------------------------------------------------------------
